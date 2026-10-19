@@ -1,253 +1,300 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Noor Khan Rider</title>
 <style>
-:root{--bg:#0c1420;--panel:#172536;--green:#00d3a0;--text:#f4f7fb;--muted:#a9b8c8;--red:#ff7272}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:15px Arial,sans-serif}
-header{background:#111e2d;padding:18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #29394b}
-.logo{font-size:32px}h1{font-size:21px;margin:0}header p{margin:5px 0 0;color:var(--muted)}
-nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#111e2d}
-button,select,input{font:inherit;border-radius:9px;padding:11px;border:1px solid #34475b}
-button{cursor:pointer;background:var(--green);color:#08221d;border:0;font-weight:bold}
-nav button{white-space:nowrap;background:#25364a;color:white}
-nav button.active{background:var(--green);color:#08221d}
-main{max-width:1100px;margin:auto;padding:18px}
-.panel{background:var(--panel);padding:18px;border-radius:15px;margin-bottom:16px;border:1px solid #2b3d51}
-h2{font-size:21px;margin-top:0}h3{font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
-.stat{background:#213348;padding:15px;border-radius:12px}
-.stat strong{display:block;font-size:23px;margin-top:9px;color:var(--green)}
-label{display:block;color:var(--muted);margin:12px 0 6px}
-input,select{width:100%;background:#0e1a29;color:white}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.row>*{flex:1}
-.small{font-size:13px;color:var(--muted);line-height:1.5}
-.notice{padding:12px;background:#28394c;border-radius:9px;margin:12px 0;line-height:1.5}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5f9;color:#172033}
+header{background:#073b2b;color:white;padding:22px 16px;text-align:center}
+header h1{margin:0 0 8px;color:#a7f3d0}
+header p{margin:0}
+main{max-width:650px;margin:20px auto;padding:0 14px}
+.card{background:white;border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px #0000000d}
+h2{font-size:19px;margin-top:0}
+label{display:block;margin:12px 0 6px;font-weight:bold}
+input,select{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px;background:white}
+button{padding:12px;border:0;border-radius:8px;background:#087443;color:white;font-size:16px;font-weight:bold;cursor:pointer}
+button:active{opacity:.8}
+.full{width:100%;margin-top:12px}
+.secondary{background:#334155}
+.small{font-size:13px;color:#64748b;line-height:1.6}
+.amount{font-size:27px;font-weight:bold;color:#087443}
+.row{display:flex;gap:10px}
+.row button{flex:1}
 .hidden{display:none!important}
-table{width:100%;border-collapse:collapse;margin-top:12px}
-td,th{text-align:left;padding:10px;border-bottom:1px solid #35475b}
-.tablewrap{overflow-x:auto}
-.badge{color:var(--green)}
-footer{text-align:center;padding:24px;color:var(--muted)}
+.notice{padding:12px;background:#ecfdf5;border-radius:8px;margin-top:10px;line-height:1.6}
+.item{padding:12px 0;border-bottom:1px solid #e2e8f0;overflow-wrap:anywhere}
+footer{text-align:center;padding:20px;color:#64748b}
 </style>
 </head>
 <body>
 <header>
- <div class="logo">🏍️</div>
- <div><h1>Noor Khan Rider</h1><p>Your Ride, Your Freedom</p></div>
+  <h1>🚗 Noor Khan Rider</h1>
+  <p>Driver aur Passenger — Ek Hi App</p>
 </header>
-<nav id="nav">
- <button class="active" data-page="home">Home</button>
- <button data-page="ride">Driver / Passenger</button>
- <button data-page="affiliate">Affiliate</button>
- <button data-page="wallet">Top-up & Payouts</button>
- <button data-page="admin">Admin Panel</button>
-</nav>
+
 <main>
-<section id="home" class="page">
- <div class="panel">
-  <h2>Welcome to Noor Khan Rider 🏍️</h2>
-  <p>One platform for passengers, drivers and affiliates.</p>
-  <div class="grid">
-   <div class="stat">Platform <strong>Ride booking</strong></div>
-   <div class="stat">User roles <strong>3</strong><span class="small">Passenger, driver, affiliate</span></div>
-   <div class="stat">Interface <strong>Responsive</strong><span class="small">Mobile and laptop</span></div>
-  </div>
- </div>
- <div class="panel"><h3>Platform features</h3>
-  <p>✓ Driver and passenger in one app</p>
-  <p>✓ Affiliate referral and commission tracking interface</p>
-  <p>✓ Manual driver balance top-up request</p>
-  <p>✓ JazzCash, Easypaisa and bank payout requests</p>
-  <p>✓ Admin management interface</p>
- </div>
- <div class="notice">Demo mode: records are stored in this browser only. This is not yet a live ride-booking or payment service.</div>
+<section class="card" id="welcome">
+<h2>اپنا اکاؤنٹ منتخب کریں</h2>
+<div class="row">
+<button onclick="chooseRole('passenger')">مسافر Passenger</button>
+<button onclick="chooseRole('driver')">ڈرائیور Driver</button>
+</div>
+<p class="small">اپنا نام اور موبائل نمبر درج کریں۔ یہ ابتدائی ڈیمو ہے؛ اکاؤنٹ ابھی سرور پر محفوظ نہیں ہوگا۔</p>
+<label>آپ کا نام</label>
+<input id="name" placeholder="اپنا نام لکھیں">
+<label>موبائل نمبر</label>
+<input id="phone" type="tel" placeholder="03XXXXXXXXX">
+<label>ریفرل کوڈ (اگر ہو)</label>
+<input id="referral" placeholder="دوست کا ریفرل کوڈ">
+<button class="full" onclick="register()">آگے بڑھیں / Continue</button>
 </section>
 
-<section id="ride" class="page hidden">
- <div class="panel">
-  <h2>Driver & Passenger Dashboard</h2>
-  <label>Choose your role</label>
-  <select id="role"><option>Passenger</option><option>Driver</option></select>
-  <label>Full name</label><input id="name" placeholder="Enter your name">
-  <label>Phone number</label><input id="phone" placeholder="03XXXXXXXXX">
-  <label>Pickup location</label><input id="pickup" placeholder="Pickup area">
-  <label>Destination</label><input id="destination" placeholder="Destination area">
-  <button onclick="saveProfile()">Save demo profile</button>
-  <div id="profileResult" class="notice hidden"></div>
- </div>
- <div class="panel">
-  <h3>Ride request / driver availability</h3>
-  <p class="small">This demo records requests locally. It does not dispatch a real driver or calculate a live fare.</p>
-  <label>Ride details</label><input id="rideDetails" placeholder="e.g. Saddar to Clifton">
-  <button onclick="addRide()">Save ride request</button>
-  <div id="rides"></div>
- </div>
+<section class="card hidden" id="dashboard">
+<h2 id="greeting">آپ کا اکاؤنٹ</h2>
+<p>اکاؤنٹ کی قسم: <b id="roleLabel"></b></p>
+<p>آپ کا ریفرل کوڈ:</p>
+<div class="notice"><b id="myCode"></b>
+<button class="full" onclick="shareReferral()">ریفرل لنک شیئر کریں</button></div>
+<p class="small">اہل ڈرائیور اور مسافر کے لیے ریفرل بونس: 2,000 روپے فی فرد۔ بونس ایڈمن کی منظوری سے ملے گا۔</p>
+<div class="notice">آپ کا ڈیمو بیلنس: <b id="balance">Rs 0</b></div>
+<div id="driverTools" class="hidden">
+<h2 style="margin-top:20px">ڈرائیور ٹاپ اَپ درخواست</h2>
+<label>رقم (روپے)</label>
+<input id="topupAmount" type="number" min="1" placeholder="مثلاً 1000">
+<label>ادائیگی کا طریقہ</label>
+<select id="topupMethod">
+<option>JazzCash</option><option>Easypaisa</option><option>Bank Account</option>
+</select>
+<label>ٹرانزیکشن نمبر / تفصیل</label>
+<input id="topupReference" placeholder="رسید یا ٹرانزیکشن نمبر">
+<button class="full" onclick="requestTopup()">ٹاپ اَپ کی درخواست بھیجیں</button>
+</div>
+<h2 style="margin-top:20px">رقم نکلوانے کی درخواست</h2>
+<label>رقم (روپے)</label>
+<input id="withdrawAmount" type="number" min="1" placeholder="مثلاً 2000">
+<label>ادائیگی کا طریقہ</label>
+<select id="withdrawMethod">
+<option>JazzCash</option><option>Easypaisa</option><option>Bank Account</option>
+</select>
+<label>اکاؤنٹ نمبر / IBAN</label>
+<input id="withdrawAccount" placeholder="اپنا وصولی اکاؤنٹ">
+<button class="full" onclick="requestWithdrawal()">رقم نکلوانے کی درخواست</button>
+<h2 style="margin-top:20px">آپ کی درخواستیں</h2>
+<div id="myRequests"></div>
+<button class="full secondary" onclick="logout()">واپس / Logout</button>
 </section>
 
-<section id="affiliate" class="page hidden">
- <div class="panel">
-  <h2>Affiliate Registration</h2>
-  <label>Full name</label><input id="affName" placeholder="Affiliate name">
-  <label>Phone number</label><input id="affPhone" placeholder="Phone number">
-  <label>Referral code</label><input id="affCode" placeholder="e.g. NOOR123">
-  <button onclick="registerAffiliate()">Register demo affiliate</button>
-  <div id="affResult" class="notice hidden"></div>
- </div>
- <div class="panel">
-  <h3>Referral and commission records</h3>
-  <p class="small">Demo commissions are not real earnings. Production commissions must be calculated and verified on the server.</p>
-  <label>Affiliate referral code</label><input id="refCode" placeholder="Enter registered referral code">
-  <label>Referred user</label><input id="refUser" placeholder="Referred person's name">
-  <label>Demo commission amount (PKR)</label><input id="commission" type="number" min="0" placeholder="0">
-  <button onclick="addReferral()">Add demo referral</button>
-  <div class="tablewrap"><table><thead><tr><th>Code</th><th>Referral</th><th>Commission (PKR)</th></tr></thead><tbody id="referrals"></tbody></table></div>
- </div>
+<section class="card" id="adminLogin">
+<h2>🔐 ایڈمن لاگ اِن</h2>
+<p class="small">یہ ڈیمو پینل ہے، حقیقی محفوظ ایڈمن لاگ اِن نہیں۔</p>
+<label>ایڈمن ڈیمو پاس کوڈ</label>
+<input id="adminPassword" type="password" placeholder="ڈیمو پاس کوڈ">
+<button class="full" onclick="adminLogin()">Admin Login</button>
 </section>
 
-<section id="wallet" class="page hidden">
- <div class="panel">
-  <h2>Driver Manual Top-up</h2>
-  <p class="small">Driver submits a request; the administrator must verify payment before approving a balance change.</p>
-  <label>Driver phone or ID</label><input id="topDriver" placeholder="Driver phone or ID">
-  <label>Amount (PKR)</label><input id="topAmount" type="number" min="1" placeholder="Amount">
-  <label>Payment reference</label><input id="topRef" placeholder="Transaction reference">
-  <button onclick="requestTopup()">Submit top-up request</button>
- </div>
- <div class="panel">
-  <h2>Affiliate Payout Request</h2>
-  <label>Affiliate referral code</label><input id="payCode" placeholder="Your affiliate code">
-  <label>Amount (PKR)</label><input id="payAmount" type="number" min="1" placeholder="Amount">
-  <label>Payment method</label>
-  <select id="payMethod"><option>JazzCash</option><option>Easypaisa</option><option>Bank account</option></select>
-  <label>Account holder name</label><input id="payHolder" placeholder="Account holder name">
-  <label>Wallet number or bank account details</label><input id="payAccount" placeholder="Enter payout details">
-  <button onclick="requestPayout()">Submit payout request</button>
-  <p class="small">Use test details only in this demo. A live service needs secure handling of financial information and verified payouts.</p>
- </div>
- <div class="panel"><h3>My demo records</h3><div id="myRecords"></div></div>
-</section>
-
-<section id="admin" class="page hidden">
- <div class="panel">
-  <h2>Private Admin Control Panel</h2>
-  <div class="notice">Security notice: this single-file demo has NO secure admin authentication. Anyone who can access its code may bypass a browser-only restriction. Do not use it to manage real users or money.</div>
-  <p>Production admin access must be protected by server-side authentication, an authorized admin account and role-based permissions.</p>
-  <h3>Demo management overview</h3>
-  <div class="grid">
-   <div class="stat">Profiles<strong id="countProfiles">0</strong></div>
-   <div class="stat">Affiliates<strong id="countAff">0</strong></div>
-   <div class="stat">Referrals<strong id="countRefs">0</strong></div>
-   <div class="stat">Requests<strong id="countRequests">0</strong></div>
-  </div>
- </div>
- <div class="panel">
-  <h3>Affiliate management</h3>
-  <div class="tablewrap"><table><thead><tr><th>Name</th><th>Code</th><th>Phone</th></tr></thead><tbody id="adminAffiliates"></tbody></table></div>
- </div>
- <div class="panel">
-  <h3>Top-up and payout management</h3>
-  <div class="tablewrap"><table><thead><tr><th>Type</th><th>Account</th><th>Amount</th><th>Method / Ref</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminRequests"></tbody></table></div>
- </div>
- <div class="panel">
-  <h3>Rider / passenger management</h3><div id="adminProfiles"></div>
- </div>
- <div class="panel">
-  <button onclick="exportData()">Export demo records (JSON)</button>
-  <button onclick="clearDemo()" style="background:#ff7272;margin-top:10px">Clear all demo records</button>
-  <p class="small">Export is a local backup, not a server backup.</p>
- </div>
+<section class="card hidden" id="adminPanel">
+<h2>Admin Control Panel</h2>
+<div class="notice">یہ صرف اسی براؤزر میں چلنے والا ڈیمو ہے۔ حقیقی ایپ میں ایڈمن اجازت سرور سے تصدیق ہونی چاہیے۔</div>
+<h2 style="margin-top:20px">ریفرل بونس منظور کریں</h2>
+<label>صارف کا ریفرل کوڈ</label>
+<input id="bonusCode" placeholder="مثلاً NKR123456">
+<label>بونس کی رقم</label>
+<input id="bonusAmount" type="number" value="2000">
+<button class="full" onclick="approveBonus()">بونس منظور کریں</button>
+<h2 style="margin-top:20px">ڈرائیور ٹاپ اَپ منظور کریں</h2>
+<label>ڈرائیور کا ریفرل کوڈ / یوزر کوڈ</label>
+<input id="topupUser" placeholder="صارف کا کوڈ">
+<label>ٹاپ اَپ رقم</label>
+<input id="adminTopupAmount" type="number" placeholder="رقم">
+<button class="full" onclick="adminTopup()">بیلنس میں اضافہ کریں</button>
+<h2 style="margin-top:20px">درخواستیں</h2>
+<div id="adminRequests"></div>
+<button class="full secondary" onclick="adminLogout()">Admin Logout</button>
 </section>
 </main>
-<footer>Noor Khan Rider © 2026 · Ride safe · Wear your helmet</footer>
+
+<footer>Noor Khan Rider © 2026</footer>
+
 <script>
-const KEY="noorKhanRiderDemoV1";
-let db;
-try { db=JSON.parse(localStorage.getItem(KEY))||{}; } catch(e){db={};}
-db.profiles=db.profiles||[];
-db.affiliates=db.affiliates||[];
-db.referrals=db.referrals||[];
-db.requests=db.requests||[];
-db.rides=db.rides||[];
-function save(){localStorage.setItem(KEY,JSON.stringify(db));render();}
-function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-document.querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>{
- document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
- document.getElementById(b.dataset.page).classList.remove("hidden");
- document.querySelectorAll("[data-page]").forEach(x=>x.classList.toggle("active",x===b));
- render();
-});
-function val(id){return document.getElementById(id).value.trim();}
-function msg(id,text){let el=document.getElementById(id);el.textContent=text;el.classList.remove("hidden");}
-function saveProfile(){
- let name=val("name"),phone=val("phone");
- if(!name||!phone)return alert("Name and phone are required.");
- db.profiles.push({id:Date.now(),name,phone,role:val("role"),pickup:val("pickup"),destination:val("destination")});
- save();msg("profileResult","Demo profile saved on this device.");
+const $ = id => document.getElementById(id);
+let user = null;
+let requests = [];
+let balances = {};
+let bonusPaid = {};
+let adminActive = false;
+
+// Demo only: never use a browser-side password for real admin security.
+const DEMO_ADMIN_CODE = "NKR-ADMIN-2026";
+
+function chooseRole(role){
+  user = {role};
+  $("welcome").dataset.role = role;
+  $("name").focus();
 }
-function addRide(){
- if(!val("rideDetails"))return alert("Enter ride details.");
- db.rides.push({id:Date.now(),details:val("rideDetails"),role:val("role"),status:"Demo request"});
- save();alert("Demo ride request saved on this device.");
+
+function register(){
+  const name = $("name").value.trim();
+  const phone = $("phone").value.trim();
+  const role = $("welcome").dataset.role;
+  if(!role){alert("پہلے Driver یا Passenger منتخب کریں۔");return;}
+  if(!name || !phone){alert("نام اور موبائل نمبر درج کریں۔");return;}
+  user = {
+    name, phone, role,
+    code:"NKR"+Math.random().toString(36).slice(2,8).toUpperCase()
+  };
+  balances[user.code] = balances[user.code] || 0;
+  $("welcome").classList.add("hidden");
+  $("dashboard").classList.remove("hidden");
+  $("greeting").textContent = "خوش آمدید، "+name;
+  $("roleLabel").textContent = role==="driver"?"Driver / ڈرائیور":"Passenger / مسافر";
+  $("myCode").textContent = user.code;
+  $("driverTools").classList.toggle("hidden",role!=="driver");
+  renderBalance();
+  renderMyRequests();
+  if($("referral").value.trim()){
+    alert("ریفرل کوڈ درج ہے۔ بونس کی حقیقی تصدیق سرور پر ہونے کے بعد ہوگی۔");
+  }
 }
-function registerAffiliate(){
- let name=val("affName"),phone=val("affPhone"),code=val("affCode").toUpperCase();
- if(!name||!phone||!code)return alert("Fill all affiliate fields.");
- if(db.affiliates.some(a=>a.code===code))return alert("That code is already registered.");
- db.affiliates.push({name,phone,code});
- save();msg("affResult","Affiliate registered in demo mode. Referral code: "+code);
+
+function shareReferral(){
+  const link = location.href.split("#")[0]+"#ref="+user.code;
+  if(navigator.share){
+    navigator.share({title:"Noor Khan Rider",text:"میرے ریفرل لنک سے Noor Khan Rider جوائن کریں",url:link}).catch(()=>{});
+  }else if(navigator.clipboard){
+    navigator.clipboard.writeText(link)
+      .then(()=>alert("ریفرل لنک کاپی ہوگیا: "+link))
+      .catch(()=>prompt("اپنا ریفرل لنک کاپی کریں",link));
+  }else{
+    prompt("اپنا ریفرل لنک کاپی کریں",link);
+  }
 }
-function addReferral(){
- let code=val("refCode").toUpperCase(),user=val("refUser"),amount=Number(val("commission"));
- if(!db.affiliates.some(a=>a.code===code)||!user||!Number.isFinite(amount)||amount<0)return alert("Enter a registered code, referral name and valid amount.");
- db.referrals.push({code,user,amount,status:"Demo"});
- save();alert("Demo referral record added.");
+
+function renderBalance(){
+  if(user) $("balance").textContent="Rs "+(balances[user.code]||0);
 }
+
+function addRequest(type,amount,method,account){
+  requests.push({
+    id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),
+    code:user.code,name:user.name,type,amount,method,account,
+    status:"Pending"
+  });
+  renderMyRequests();
+  renderAdminRequests();
+  alert("درخواست ڈیمو میں درج ہوگئی۔ حقیقی سرور پر ابھی نہیں بھیجی گئی۔");
+}
+
 function requestTopup(){
- let driver=val("topDriver"),amount=Number(val("topAmount")),ref=val("topRef");
- if(!driver||!ref||!Number.isFinite(amount)||amount<=0)return alert("Enter driver, valid amount and payment reference.");
- db.requests.push({id:Date.now(),type:"Top-up",account:driver,amount,method:ref,status:"Pending"});
- save();alert("Top-up request submitted for admin review.");
+  const amount=Number($("topupAmount").value);
+  if(!Number.isFinite(amount)||amount<=0){alert("درست رقم درج کریں۔");return;}
+  addRequest("Top-up",amount,$("topupMethod").value,$("topupReference").value.trim());
 }
-function requestPayout(){
- let code=val("payCode").toUpperCase(),amount=Number(val("payAmount")),method=val("payMethod"),holder=val("payHolder"),account=val("payAccount");
- if(!db.affiliates.some(a=>a.code===code)||!holder||!account||!Number.isFinite(amount)||amount<=0)return alert("Use a registered affiliate code and fill all payout fields.");
- db.requests.push({id:Date.now(),type:"Affiliate payout",account:code+" / "+holder+" / "+account,amount,method,status:"Pending"});
- save();alert("Demo payout request submitted for admin review.");
+
+function requestWithdrawal(){
+  const amount=Number($("withdrawAmount").value);
+  const account=$("withdrawAccount").value.trim();
+  if(!Number.isFinite(amount)||amount<=0||!account){alert("درست رقم اور اکاؤنٹ کی تفصیل درج کریں۔");return;}
+  if(amount>(balances[user.code]||0)){alert("آپ کے ڈیمو بیلنس میں اتنی رقم موجود نہیں۔");return;}
+  addRequest("Withdrawal",amount,$("withdrawMethod").value,account);
 }
-function updateRequest(id,status){
- let r=db.requests.find(x=>x.id===id);if(!r)return;
- if(status==="Paid"||status==="Approved") {
-  if(!confirm("Confirm "+status+"? Demo only: no actual money will be transferred."))return;
- }
- r.status=status;save();
+
+function renderMyRequests(){
+  if(!user)return;
+  const mine=requests.filter(r=>r.code===user.code);
+  $("myRequests").innerHTML=mine.length?mine.map(r=>
+    `<div class="item">${r.type}: Rs ${r.amount}<br>${r.method} — ${r.status}</div>`
+  ).join(""):"ابھی کوئی درخواست نہیں۔";
 }
-function render(){
- document.getElementById("countProfiles").textContent=db.profiles.length;
- document.getElementById("countAff").textContent=db.affiliates.length;
- document.getElementById("countRefs").textContent=db.referrals.length;
- document.getElementById("countRequests").textContent=db.requests.length;
- document.getElementById("adminAffiliates").innerHTML=db.affiliates.map(a=>`<tr><td>${esc(a.name)}</td><td>${esc(a.code)}</td><td>${esc(a.phone)}</td></tr>`).join("");
- document.getElementById("referrals").innerHTML=db.referrals.map(r=>`<tr><td>${esc(r.code)}</td><td>${esc(r.user)}</td><td>${esc(r.amount)}</td></tr>`).join("");
- document.getElementById("adminProfiles").innerHTML=db.profiles.map(p=>`<div class="notice">${esc(p.role)} · ${esc(p.name)} · ${esc(p.phone)}</div>`).join("")||"No demo profiles yet.";
- document.getElementById("adminRequests").innerHTML=db.requests.map(r=>`<tr><td>${esc(r.type)}</td><td>${esc(r.account)}</td><td>${esc(r.amount)}</td><td>${esc(r.method)}</td><td>${esc(r.status)}</td><td><button onclick="updateRequest(${r.id},'Approved')">Approve</button> <button onclick="updateRequest(${r.id},'Rejected')">Reject</button> <button onclick="updateRequest(${r.id},'Paid')">Mark paid</button></td></tr>`).join("");
- document.getElementById("rides").innerHTML=db.rides.map(r=>`<div class="notice">${esc(r.details)} — ${esc(r.status)}</div>`).join("");
- document.getElementById("myRecords").innerHTML=db.requests.map(r=>`<div class="notice">${esc(r.type)} · PKR ${esc(r.amount)} · ${esc(r.status)}</div>`).join("")||"No demo requests yet.";
+
+function adminLogin(){
+  if($("adminPassword").value!==DEMO_ADMIN_CODE){
+    alert("غلط ڈیمو پاس کوڈ۔");return;
+  }
+  adminActive=true;
+  $("adminLogin").classList.add("hidden");
+  $("adminPanel").classList.remove("hidden");
+  renderAdminRequests();
 }
-function exportData(){
- const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
- const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="noor-khan-rider-demo.json";a.click();URL.revokeObjectURL(a.href);
+
+function adminLogout(){
+  adminActive=false;
+  $("adminPanel").classList.add("hidden");
+  $("adminLogin").classList.remove("hidden");
+  $("adminPassword").value="";
 }
-function clearDemo(){
- if(!confirm("Delete all demo records from this browser?"))return;
- localStorage.removeItem(KEY);db={profiles:[],affiliates:[],referrals:[],requests:[],rides:[]};render();
+
+function approveBonus(){
+  if(!adminActive)return;
+  const code=$("bonusCode").value.trim().toUpperCase();
+  const amount=Number($("bonusAmount").value);
+  if(!code||!Number.isFinite(amount)||amount!==2000){
+    alert("صارف کا کوڈ درج کریں۔ ریفرل بونس 2000 روپے ہے۔");return;
+  }
+  if(bonusPaid[code]){
+    alert("اس ڈیمو میں اس کوڈ پر بونس پہلے دیا جا چکا ہے۔");return;
+  }
+  if(!balances.hasOwnProperty(code)){
+    alert("یہ کوڈ موجودہ ڈیمو سیشن میں نہیں ملا۔");return;
+  }
+  balances[code]+=amount;
+  bonusPaid[code]=true;
+  if(user&&user.code===code)renderBalance();
+  alert("ڈیمو بونس درج ہوگیا۔ حقیقی منظوری سرور سے ہونی چاہیے۔");
 }
-render();
+
+function adminTopup(){
+  if(!adminActive)return;
+  const code=$("topupUser").value.trim().toUpperCase();
+  const amount=Number($("adminTopupAmount").value);
+  if(!balances.hasOwnProperty(code)||!Number.isFinite(amount)||amount<=0){
+    alert("موجودہ ڈیمو صارف کا کوڈ اور درست رقم درج کریں۔");return;
+  }
+  balances[code]+=amount;
+  if(user&&user.code===code)renderBalance();
+  alert("ڈیمو بیلنس اپڈیٹ ہوگیا۔");
+}
+
+function renderAdminRequests(){
+  if(!adminActive)return;
+  $("adminRequests").innerHTML=requests.length?requests.map(r=>
+    `<div class="item"><b>${r.type}</b> — Rs ${r.amount}<br>
+    صارف: ${r.name} (${r.code})<br>${r.method}<br>
+    تفصیل: ${r.account||"—"}<br>حالت: ${r.status}<br>
+    ${r.status==="Pending"?`<button onclick="reviewRequest('${r.id}','Approved')">منظور کریں</button> <button class="secondary" onclick="reviewRequest('${r.id}','Rejected')">رد کریں</button>`:""}
+    </div>`
+  ).join(""):"ابھی کوئی درخواست نہیں۔";
+}
+
+function reviewRequest(id,status){
+  if(!adminActive)return;
+  const r=requests.find(x=>x.id===id);
+  if(!r||r.status!=="Pending")return;
+  if(status==="Approved"&&r.type==="Top-up"){
+    // Demo only: a real top-up must follow verified payment.
+    balances[r.code]=(balances[r.code]||0)+r.amount;
+  }
+  if(status==="Approved"&&r.type==="Withdrawal"){
+    if((balances[r.code]||0)<r.amount){
+      alert("بیلنس ناکافی ہے۔");return;
+    }
+    balances[r.code]-=r.amount;
+  }
+  r.status=status;
+  renderAdminRequests();
+  renderMyRequests();
+  renderBalance();
+  alert("ڈیمو درخواست "+status+" ہوگئی۔ رقم خود بخود منتقل نہیں ہوئی۔");
+}
+
+function logout(){
+  user=null;
+  $("dashboard").classList.add("hidden");
+  $("welcome").classList.remove("hidden");
+}
 </script>
 </body>
-</html>
-  
+ </html>
+ 
